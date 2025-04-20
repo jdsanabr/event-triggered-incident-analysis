@@ -96,3 +96,31 @@ To identify the events that triggered the most extreme market reactions — both
 This insight helps stakeholders pinpoint which event types or companies are most sensitive to external triggers, guiding future risk assessments and opportunity analyses.
 
 **SQL Queries**:
+-- Top 3 Positive Reactions
+SELECT 
+    company, 
+    ticker,
+    date,
+    event_title, 
+    event_type, 
+    percent_change
+FROM 
+    incidents
+ORDER BY 
+    percent_change DESC
+LIMIT 3;
+
+-- Top 3 Negative Reactions
+SELECT 
+    company, 
+    ticker,
+    date,
+    event_title, 
+    event_type, 
+    percent_change
+FROM 
+    incidents
+ORDER BY 
+    percent_change ASC
+LIMIT 3;
+
