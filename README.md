@@ -84,7 +84,7 @@ Regulatory/Geopolitical | -6.87
 Public Relations / Crisis Event | -4.71
 Layoffs | -13.18
 
-🔍 Key Takeaway:
+🔍 **Key Takeaway**:
 Earnings-related events and promotional campaigns tend to have a positive or neutral effect on stock prices.
 Events such as layoffs, geopolitical issues, or crises show a notable negative average impact.
 
@@ -124,3 +124,13 @@ ORDER BY
     percent_change ASC
 LIMIT 3;
 
+Key Findings (based on mock data):
+
+📈 **Positive**:
+Events like earnings beats or political endorsements showed a sharp rise in stock price (up to +4.8%).
+
+📉 **Negative**:
+Events such as mass layoffs, geopolitical restrictions, and protests had significant negative reactions (as low as −13%).
+
+**Takeaway**:
+Understanding which triggers cause volatile swings helps refine communication strategies, crisis management plans, and investor relations.
