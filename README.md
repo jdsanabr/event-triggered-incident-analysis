@@ -59,10 +59,10 @@ project/
 - Automate dashboard reporting (Tableau or Power BI)
 
 # Querie 1: Average Market Impact by Event Type
-Objective:
+**Objective**:
 Understand how different categories of events affect stock price movements on average.
 
-SQL Query:
+**SQL Query**:
 SELECT 
     event_type, 
     ROUND(AVG(percent_change), 2) AS avg_percent_change
@@ -88,35 +88,11 @@ Layoffs | -13.18
 Earnings-related events and promotional campaigns tend to have a positive or neutral effect on stock prices.
 Events such as layoffs, geopolitical issues, or crises show a notable negative average impact.
 
-# 📊 Query 2: Largest Positive & Negative Market Reactions by Event
-Objective:
-Identify the events that triggered the most extreme changes in stock price — both upward and downward — to highlight the impact of external triggers.
+# 📌 Query 2: Largest Positive & Negative Market Reactions
+**Purpose**:
+To identify the events that triggered the most extreme market reactions — both positive and negative — based on the percent change in stock closing price.
 
-🔍 SQL Query:
--- Top 3 Positive Reactions
-SELECT 
-    company, 
-    ticker,
-    date,
-    event_title, 
-    event_type, 
-    percent_change
-FROM 
-    incidents
-ORDER BY 
-    percent_change DESC
-LIMIT 3;
+**Business Value**:
+This insight helps stakeholders pinpoint which event types or companies are most sensitive to external triggers, guiding future risk assessments and opportunity analyses.
 
--- Top 3 Negative Reactions
-SELECT 
-    company, 
-    ticker,
-    date,
-    event_title, 
-    event_type, 
-    percent_change
-FROM 
-    incidents
-ORDER BY 
-    percent_change ASC
-LIMIT 3;
+**SQL Queries**:
