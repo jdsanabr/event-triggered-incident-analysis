@@ -54,3 +54,8 @@ project/
 │   └── sentiment_vs_percent_change.png
 ├── README.md
 
+🚀 Future Work
+Add real-time data from APIs (e.g., Alpha Vantage or Yahoo Finance)
+Train a regression model to predict impact severity
+Expand dataset to 100+ entries
+Automate dashboard reporting (Tableau or Power BI)
