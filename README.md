@@ -134,3 +134,25 @@ Events such as mass layoffs, geopolitical restrictions, and protests had signifi
 
 **Takeaway**:
 Understanding which triggers cause volatile swings helps refine communication strategies, crisis management plans, and investor relations.
+
+# 🔍 Query 3: Average Market Reaction by Event Type
+**Question**:
+How do different types of events (e.g., layoffs, geopolitical changes, earnings reports) typically impact stock prices?
+
+**Purpose**:
+To uncover patterns in how each category of event influences market reaction. This allows stakeholders to understand which event types drive the strongest positive or negative responses on average.
+
+**SQL Query**:
+SELECT 
+    event_type,
+    ROUND(AVG(percent_change), 2) AS avg_percent_change,
+    COUNT(*) AS number_of_events
+FROM 
+    incidents
+GROUP BY 
+    event_type
+ORDER BY 
+    avg_percent_change DESC;
+
+**Why It Matters**:
+This analysis offers insight into market sensitivity by event category. For instance, if "Layoffs" typically result in steep declines, companies may want to control the narrative or time announcements strategically. Conversely, knowing that "Earnings Reports" tend to yield positive returns can help emphasize performance highlights during investor communications.
