@@ -4,7 +4,7 @@ A data analyst portfolio project exploring how different types of events influen
 # 🧠 Objective
 To analyze the impact of major events (e.g., layoffs, earnings, geopolitical shifts) on stock performance, identify trends across event types, and showcase data analysis skills using SQL, Python (Pandas), Excel, and PostgreSQL.
 
-#🔍 Key Business Questions
+# 🔍 Key Business Questions
 Which types of events most negatively impact stock prices?
 
 How does sentiment score correlate with percent change in stock price?
