@@ -87,3 +87,36 @@ Layoffs | -13.18
 🔍 Key Takeaway:
 Earnings-related events and promotional campaigns tend to have a positive or neutral effect on stock prices.
 Events such as layoffs, geopolitical issues, or crises show a notable negative average impact.
+
+# 📊 Query 2: Largest Positive & Negative Market Reactions by Event
+Objective:
+Identify the events that triggered the most extreme changes in stock price — both upward and downward — to highlight the impact of external triggers.
+
+🔍 SQL Query:
+-- Top 3 Positive Reactions
+SELECT 
+    company, 
+    ticker,
+    date,
+    event_title, 
+    event_type, 
+    percent_change
+FROM 
+    incidents
+ORDER BY 
+    percent_change DESC
+LIMIT 3;
+
+-- Top 3 Negative Reactions
+SELECT 
+    company, 
+    ticker,
+    date,
+    event_title, 
+    event_type, 
+    percent_change
+FROM 
+    incidents
+ORDER BY 
+    percent_change ASC
+LIMIT 3;
