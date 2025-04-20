@@ -185,5 +185,18 @@ To evaluate how different companies' stock prices typically reacted to significa
 - Companies with negative average reactions (possible investor concerns or recurring risk factors).
 - Event volume per company to assess data reliability.
 
+**SQL Query**:
+SELECT 
+    company,
+    ROUND(AVG(percent_change), 2) AS avg_percent_change,
+    COUNT(*) AS event_count
+FROM 
+    incidents
+GROUP BY 
+    company
+ORDER BY 
+    avg_percent_change DESC;
+
+
 📌 **Insight**:
 This supports strategic storytelling around company resilience or volatility in response to real-world events—an essential angle for showcasing data-driven business intelligence.
