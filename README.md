@@ -58,7 +58,7 @@ project/
 - Expand dataset to 100+ entries
 - Automate dashboard reporting (Tableau or Power BI)
 
-# Querie 1: Average Market Impact by Event Type
+# Query 1: Average Market Impact by Event Type
 **Objective**:
 Understand how different categories of events affect stock price movements on average.
 
