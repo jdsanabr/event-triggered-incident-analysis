@@ -16,11 +16,9 @@ Do neutral events result in minimal stock movement as expected?
 Is there a regional pattern in how events affect stock price volatility?
 
 # 🗃️ Dataset
-Source: Manually curated mock dataset (12 companies, 12 events)
-
-Format: CSV → PostgreSQL
-
-Fields Include:
+- Source: Manually curated mock dataset (12 companies, 12 events)
+- Format: CSV → PostgreSQL
+- Fields Include:
 event_id, company, ticker, date, event_title, event_type, sentiment_score, platform_channel, region, incident_volume, closing_price_before, closing_price_after, percent_change, notes
 
 # 🛠️ Tools & Technologies
