@@ -40,3 +40,17 @@ event_id, company, ticker, date, event_title, event_type, sentiment_score, platf
 
 # 📌 Findings & Insights
 (Will be added as queries and visuals are completed.)
+
+# 📁 File Structure (Planned)
+project/
+├── data/
+│   ├── incidents_analysis.csv
+│   └── cleaned_data.csv
+├── notebooks/
+│   └── exploratory_analysis.ipynb
+├── sql/
+│   └── queries.sql
+├── visuals/
+│   └── sentiment_vs_percent_change.png
+├── README.md
+
