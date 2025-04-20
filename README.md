@@ -156,3 +156,34 @@ ORDER BY
 
 **Why It Matters**:
 This analysis offers insight into market sensitivity by event category. For instance, if "Layoffs" typically result in steep declines, companies may want to control the narrative or time announcements strategically. Conversely, knowing that "Earnings Reports" tend to yield positive returns can help emphasize performance highlights during investor communications.
+
+# 🔍 Query 4: Companies with Highest Average Volatility After Events
+**Question**:
+Which companies experienced the largest average absolute stock price changes in response to events?
+
+**Purpose**:
+To identify companies whose stock prices are most reactive (positively or negatively) to event triggers, regardless of direction. This sheds light on which companies are most sensitive to external/internal stimuli.
+
+**SQL Query**:
+SELECT 
+    company,
+    ticker,
+    ROUND(AVG(ABS(percent_change)), 2) AS avg_volatility,
+    COUNT(*) AS number_of_events
+FROM 
+    incidents
+GROUP BY 
+    company, ticker
+ORDER BY 
+    avg_volatility DESC
+LIMIT 5;
+
+# 🔎 Query 5: Average Percent Change by Company, Ranked
+🎯 **Purpose**:
+To evaluate how different companies' stock prices typically reacted to significant events, helping identify:
+- Companies with positive average reactions (potential resilience or investor confidence).
+- Companies with negative average reactions (possible investor concerns or recurring risk factors).
+- Event volume per company to assess data reliability.
+
+📌 **Insight**:
+This supports strategic storytelling around company resilience or volatility in response to real-world events—an essential angle for showcasing data-driven business intelligence.
