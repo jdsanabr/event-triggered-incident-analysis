@@ -22,3 +22,16 @@ Format: CSV → PostgreSQL
 
 Fields Include:
 event_id, company, ticker, date, event_title, event_type, sentiment_score, platform_channel, region, incident_volume, closing_price_before, closing_price_after, percent_change, notes
+
+# 🛠️ Tools & Technologies
+PostgreSQL (via pgAdmin4)
+
+SQL
+
+Python (Jupyter Notebook)
+
+Pandas
+
+Excel
+
+GitHub
