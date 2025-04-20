@@ -57,3 +57,33 @@ project/
 - Train a regression model to predict impact severity
 - Expand dataset to 100+ entries
 - Automate dashboard reporting (Tableau or Power BI)
+
+# Querie 1: Average Market Impact by Event Type
+Objective:
+Understand how different categories of events affect stock price movements on average.
+
+SQL Query:
+SELECT 
+    event_type, 
+    ROUND(AVG(percent_change), 2) AS avg_percent_change
+FROM 
+    incidents
+GROUP BY 
+    event_type
+ORDER BY 
+    avg_percent_change DESC;
+
+Event Type | Avg % Change
+Earnings / Financial Reporting | 0.37
+Promotional / PR | 0.67
+Political/Market Sentiment | 4.81
+Workforce / Strategic Operations | 0.18
+Earnings Report / Corporate Strategy | -0.48
+Economic Policy / Federal Reserve Announcement | -1.55
+Regulatory/Geopolitical | -6.87
+Public Relations / Crisis Event | -4.71
+Layoffs | -13.18
+
+🔍 Key Takeaway:
+Earnings-related events and promotional campaigns tend to have a positive or neutral effect on stock prices.
+Events such as layoffs, geopolitical issues, or crises show a notable negative average impact.
