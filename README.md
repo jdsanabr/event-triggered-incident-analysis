@@ -1,202 +1,84 @@
-# 📊 Event Triggered Incident Analysis
-A data analyst portfolio project exploring how different types of events influence short-term stock price movements across various companies.
+# 📊 Event-Triggered Incident Analysis
 
-# 🧠 Objective
-To analyze the impact of major events (e.g., layoffs, earnings, geopolitical shifts) on stock performance, identify trends across event types, and showcase data analysis skills using SQL, Python (Pandas), Excel, and PostgreSQL.
+## 🎯 Objective  
+This project explores how different types of public events (layoffs, earnings reports, geopolitical issues, etc.) influence the stock price movements of major companies. The goal is to identify patterns between event types, market sentiment, and resulting price changes to inform future market analysis and business strategy.
 
-# 🔍 Key Business Questions
-Which types of events most negatively impact stock prices?
+## 🔍 Key Questions Answered
+1. What event types cause the greatest average stock price change?
+2. Which companies are most sensitive to external events?
+3. How does sentiment score correlate with stock price movement?
+4. Are there noticeable geographic patterns tied to market reactions?
+5. Do certain platforms amplify market response more than others?
 
-How does sentiment score correlate with percent change in stock price?
+## 🧰 Tools Used
+- **PostgreSQL / pgAdmin 4** – for data querying and manipulation  
+- **Excel** – for pivot tables and visualizations  
+- *Tableau Public planned for future phase*  
+- **Python & Jupyter (future phase)** – for potential API integrations or further analysis
 
-Which companies are most sensitive to external events?
+## 📁 Dataset  
+Data was manually constructed and cleaned to simulate real-world incident reports affecting the stock market.  
+CSV file includes:  
+- Event metadata (title, date, company, region, etc.)  
+- Market reaction (before/after stock price, percent change)  
+- Sentiment score  
+- Source/platform channel  
 
-Do neutral events result in minimal stock movement as expected?
+> File: `incidents_data.csv`
 
-Is there a regional pattern in how events affect stock price volatility?
+## 🧠 Key Insights & Visualizations
 
-# 🗃️ Dataset
-- Source: Manually curated mock dataset (12 companies, 12 events)
-- Format: CSV → PostgreSQL
-- Fields Include:
-event_id, company, ticker, date, event_title, event_type, sentiment_score, platform_channel, region, incident_volume, closing_price_before, closing_price_after, percent_change, notes
+### 1. Average Percent Change by Event Type  
+- 📈 **Insight**: Layoffs and regulatory/geopolitical events had the most negative impact on stock prices.  
+- 🎯 **Purpose**: Identify high-impact event categories for risk forecasting  
+- 📏 **Metric Used**: `AVG(percent_change)` grouped by `event_type`
 
-# 🛠️ Tools & Technologies
-- PostgreSQL (via pgAdmin4)
-- SQL
-- Python (Jupyter Notebook)
-- Pandas
-- Excel
-- GitHub
+---
 
-# 📈 Methods
-- Data Cleaning (Excel & Pandas)
-- ETL to PostgreSQL
-- Exploratory SQL Queries
-- Visualizations (in progress)
-- Insights & Business Recommendations
+### 2. Company Sensitivity to Events  
+- 📈 **Insight**: Tesla and Nvidia showed stronger price swings, suggesting heightened market sensitivity.  
+- 🎯 **Purpose**: Reveal which companies are more volatile following public events  
+- 📏 **Metric Used**: `AVG(percent_change)` grouped by `company`
 
-# 📌 Findings & Insights
-(Will be added as queries and visuals are completed.)
+---
 
-# 📁 File Structure (Planned)
-project/
-├── data/
-│   ├── incidents_analysis.csv
-│   └── cleaned_data.csv
-├── notebooks/
-│   └── exploratory_analysis.ipynb
-├── sql/
-│   └── queries.sql
-├── visuals/
-│   └── sentiment_vs_percent_change.png
-├── README.md
+### 3. Sentiment Score vs Percent Change (Scatter Plot)  
+- 📈 **Insight**: Positive sentiment generally aligned with positive price movement; outliers were observed.  
+- 🎯 **Purpose**: Explore the correlation between market sentiment and price reaction  
+- 📏 **Metric Used**: `sentiment_score` vs `percent_change` (scatter plot)
 
-# 🚀 Future Work
-- Add real-time data from APIs (e.g., Alpha Vantage or Yahoo Finance)
-- Train a regression model to predict impact severity
-- Expand dataset to 100+ entries
-- Automate dashboard reporting (Tableau or Power BI)
+---
 
-# Query 1: Average Market Impact by Event Type
-**Objective**:
-Understand how different categories of events affect stock price movements on average.
+### 4. Average Percent Change by Region  
+- 📈 **Insight**: US-based events showed slightly higher volatility than international ones.  
+- 🎯 **Purpose**: Understand if regional factors influence investor behavior  
+- 📏 **Metric Used**: `AVG(percent_change)` grouped by `region`
 
-**SQL Query**:
-SELECT 
-    event_type, 
-    ROUND(AVG(percent_change), 2) AS avg_percent_change
-FROM 
-    incidents
-GROUP BY 
-    event_type
-ORDER BY 
-    avg_percent_change DESC;
+---
 
-Event Type | Avg % Change
-Earnings / Financial Reporting | 0.37
-Promotional / PR | 0.67
-Political/Market Sentiment | 4.81
-Workforce / Strategic Operations | 0.18
-Earnings Report / Corporate Strategy | -0.48
-Economic Policy / Federal Reserve Announcement | -1.55
-Regulatory/Geopolitical | -6.87
-Public Relations / Crisis Event | -4.71
-Layoffs | -13.18
+### 5. Average Percent Change by Platform Channel  
+- 📈 **Insight**: News articles and leaked emails had stronger impact than social media platforms.  
+- 🎯 **Purpose**: Determine which platforms amplify or signal market shifts  
+- 📏 **Metric Used**: `AVG(percent_change)` grouped by `platform_channel`
 
-🔍 **Key Takeaway**:
-Earnings-related events and promotional campaigns tend to have a positive or neutral effect on stock prices.
-Events such as layoffs, geopolitical issues, or crises show a notable negative average impact.
+---
 
-# 📌 Query 2: Largest Positive & Negative Market Reactions
-**Purpose**:
-To identify the events that triggered the most extreme market reactions — both positive and negative — based on the percent change in stock closing price.
+## 📌 How to Run This Project
+1. Open the dataset in Excel to explore raw data and pivot table insights  
+2. Run SQL queries (provided in `/SQL/queries.sql`) using PostgreSQL/pgAdmin  
+3. View and replicate visualizations in `/Excel/` folder  
+4. *(Optional)* Load CSV into Tableau Public to build interactive dashboards
 
-**Business Value**:
-This insight helps stakeholders pinpoint which event types or companies are most sensitive to external triggers, guiding future risk assessments and opportunity analyses.
+---
 
-**SQL Queries**:
--- Top 3 Positive Reactions
-SELECT 
-    company, 
-    ticker,
-    date,
-    event_title, 
-    event_type, 
-    percent_change
-FROM 
-    incidents
-ORDER BY 
-    percent_change DESC
-LIMIT 3;
+## 🚀 Next Steps
+- Create Tableau dashboards for advanced data storytelling  
+- Integrate external APIs for real stock price history (considering options like Alpha Vantage, Yahoo Finance)   
 
--- Top 3 Negative Reactions
-SELECT 
-    company, 
-    ticker,
-    date,
-    event_title, 
-    event_type, 
-    percent_change
-FROM 
-    incidents
-ORDER BY 
-    percent_change ASC
-LIMIT 3;
+---
 
-Key Findings (based on mock data):
-
-📈 **Positive**:
-Events like earnings beats or political endorsements showed a sharp rise in stock price (up to +4.8%).
-
-📉 **Negative**:
-Events such as mass layoffs, geopolitical restrictions, and protests had significant negative reactions (as low as −13%).
-
-**Takeaway**:
-Understanding which triggers cause volatile swings helps refine communication strategies, crisis management plans, and investor relations.
-
-# 🔍 Query 3: Average Market Reaction by Event Type
-**Question**:
-How do different types of events (e.g., layoffs, geopolitical changes, earnings reports) typically impact stock prices?
-
-**Purpose**:
-To uncover patterns in how each category of event influences market reaction. This allows stakeholders to understand which event types drive the strongest positive or negative responses on average.
-
-**SQL Query**:
-SELECT 
-    event_type,
-    ROUND(AVG(percent_change), 2) AS avg_percent_change,
-    COUNT(*) AS number_of_events
-FROM 
-    incidents
-GROUP BY 
-    event_type
-ORDER BY 
-    avg_percent_change DESC;
-
-**Why It Matters**:
-This analysis offers insight into market sensitivity by event category. For instance, if "Layoffs" typically result in steep declines, companies may want to control the narrative or time announcements strategically. Conversely, knowing that "Earnings Reports" tend to yield positive returns can help emphasize performance highlights during investor communications.
-
-# 🔍 Query 4: Companies with Highest Average Volatility After Events
-**Question**:
-Which companies experienced the largest average absolute stock price changes in response to events?
-
-**Purpose**:
-To identify companies whose stock prices are most reactive (positively or negatively) to event triggers, regardless of direction. This sheds light on which companies are most sensitive to external/internal stimuli.
-
-**SQL Query**:
-SELECT 
-    company,
-    ticker,
-    ROUND(AVG(ABS(percent_change)), 2) AS avg_volatility,
-    COUNT(*) AS number_of_events
-FROM 
-    incidents
-GROUP BY 
-    company, ticker
-ORDER BY 
-    avg_volatility DESC
-LIMIT 5;
-
-# 🔎 Query 5: Average Percent Change by Company, Ranked
-🎯 **Purpose**:
-To evaluate how different companies' stock prices typically reacted to significant events, helping identify:
-- Companies with positive average reactions (potential resilience or investor confidence).
-- Companies with negative average reactions (possible investor concerns or recurring risk factors).
-- Event volume per company to assess data reliability.
-
-**SQL Query**:
-SELECT 
-    company,
-    ROUND(AVG(percent_change), 2) AS avg_percent_change,
-    COUNT(*) AS event_count
-FROM 
-    incidents
-GROUP BY 
-    company
-ORDER BY 
-    avg_percent_change DESC;
-
-
-📌 **Insight**:
-This supports strategic storytelling around company resilience or volatility in response to real-world events—an essential angle for showcasing data-driven business intelligence.
+## 👤 Author  
+**Jonathan Sanabria**  
+📍 Santa Clarita, CA  
+📧 [JonathanDavidSanabria@gmail.com](mailto:JonathanDavidSanabria@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/jonathan-d-sanabria/) | [GitHub](https://github.com/jdsanabr)  
